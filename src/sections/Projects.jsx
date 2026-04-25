@@ -9,7 +9,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Full Stack LMS',
+      title: 'Learnify',
       description: 'A comprehensive Learning Management System built with MERN stack, featuring JWT authentication, role-based access control, and responsive design.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
       tech: ['React', 'Node.js', 'MongoDB', 'JWT'],
@@ -41,7 +41,7 @@ const Projects = () => {
   
   title: 'PrintPro - Printing Management System',
   description: 'Worked on the frontend development of a large-scale printing management system during internship at Indux Technology. Contributed to building responsive UI pages using React, TypeScript, and Tailwind CSS, while collaborating within a full-stack architecture involving Node.js backend, PostgreSQL database, and Python-based print engine.',
-  image: 'https://images.unsplash.com/photo-1581092919535-7146ff1c4c0f?w=800',
+  image: 'https://i.pinimg.com/1200x/05/16/4d/05164db46800fa4275708ae92df39222.jpg',
   tech: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Node.js'],
   liveLink: '#',
   githubLink: 'https://github.com/Agroking-Store/proooo',
