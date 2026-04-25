@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap'; // ✅ FIXED IMPORT
+import gsap from 'gsap'; 
 import Lenis from 'lenis';
 
 import Loading from './components/Loading';
@@ -14,30 +14,31 @@ import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
+import Certificates from "./sections/Certificates";
 
 function App() {
   const [theme, setTheme] = useState('dark');
   const [isLoading, setIsLoading] = useState(true);
 
-  // ✅ Theme init
+  
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) setTheme(storedTheme);
   }, []);
 
-  // ✅ Theme apply
+  
   useEffect(() => {
     document.documentElement.classList.toggle('light', theme === 'light');
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // ✅ Loader
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Lenis smooth scroll (safe)
+  
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -55,7 +56,7 @@ function App() {
     };
   }, []);
 
-  // ✅ GSAP SAFE (NO CRASH)
+  
   useEffect(() => {
     if (!isLoading) {
       const elements = document.querySelectorAll('.stagger-fade');
@@ -65,7 +66,7 @@ function App() {
           y: 36,
           opacity: 0,
           duration: 0.8,
-          ease: 'power2.out', // ✅ safer easing
+          ease: 'power2.out', //  safer easing
           stagger: 0.1,
         });
       }
@@ -103,9 +104,11 @@ function App() {
             <About />
             <Skills />
             <Projects />
+            <Certificates />
             <Experience />
             <Contact />
             <Footer />
+            
           </motion.div>
         </main>
       </div>

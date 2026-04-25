@@ -34,7 +34,28 @@ const Projects = () => {
       liveLink: 'https://induxcrm.induxtechnology.com/dashboard',
       githubLink: 'https://github.com/Agroking-Store/induxCRM.git      ',
       period: 'Ongoing Internship'
-    }
+    },
+    {
+  
+  
+  
+  title: 'PrintPro - Printing Management System',
+  description: 'Worked on the frontend development of a large-scale printing management system during internship at Indux Technology. Contributed to building responsive UI pages using React, TypeScript, and Tailwind CSS, while collaborating within a full-stack architecture involving Node.js backend, PostgreSQL database, and Python-based print engine.',
+  image: 'https://images.unsplash.com/photo-1581092919535-7146ff1c4c0f?w=800',
+  tech: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Node.js'],
+  liveLink: '#',
+  githubLink: 'https://github.com/Agroking-Store/proooo',
+  period: 'Indux Technology Internship'
+}
+  
+
+
+
+
+
+
+
+
   ];
 
   return (

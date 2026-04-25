@@ -20,6 +20,14 @@ const Experience = () => {
         'Collaborated using Git & GitHub and improved UI responsiveness and overall performance'
       ]
     },
+
+
+
+
+
+
+
+
     {
       title: 'Bachelor of Engineering (Information Technology)',
       company: 'Sinhgad Institute of Technology',
@@ -30,14 +38,36 @@ const Experience = () => {
         'Focus on software development, data structures, and algorithms',
         'Active in coding competitions and hackathons'
       ]
-    }
-  ];
+    },
+   {
+    title: 'Higher Secondary (12th)',
+    company: 'Lakha Interstariya Madhya Vidyalaya, Barni (Bhojpur, Bihar)',
+    location: 'Bihar Board',
+    period: 'Completed',
+    description: [
+      'Completed 12th from Bihar Board',
+      'Secured 66.7% marks',
+      
+    ]
+  },
 
-  const certifications = [
-    'Data Science Foundation - Oracle University',
-    'JavaScript Programming - Infosys Springboard',
-    'Java Programming - Infosys Springboard',
-    'MERN Stack Backend Development - Skill India'
+  {
+    title: 'Secondary (10th)',
+    company: 'Delhi Model Public School, Kulharia (Ara, Bihar)',
+    location: 'CBSE Board',
+    period: 'Completed',
+    description: [
+      'Completed 10th from CBSE Board',
+      'Secured 65% marks',
+      
+    ]
+  }
+
+
+
+
+
+
   ];
 
   return (
@@ -57,7 +87,6 @@ const Experience = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-blue to-neon-purple rounded-full hidden md:block"></div>
 
           <div className="space-y-12">
@@ -71,10 +100,8 @@ const Experience = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
-                {/* Timeline dot */}
                 <div className="hidden md:block w-6 h-6 bg-neon-blue rounded-full border-4 border-dark-bg absolute left-1/2 transform -translate-x-1/2 z-10 shadow-neon"></div>
 
-                {/* Content */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <div className="glass-card p-6">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
@@ -94,41 +121,11 @@ const Experience = () => {
                   </div>
                 </div>
 
-                {/* Spacer for timeline */}
                 <div className="hidden md:block w-2/12"></div>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16"
-        >
-          <h3 className="text-3xl font-bold text-center mb-8 neon-text">Certifications</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 + 1 }}
-                className="glass-card p-6 text-center"
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-white">{cert}</h4>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

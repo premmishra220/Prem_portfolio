@@ -7,15 +7,15 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center bg-[#050505] overflow-hidden"
     >
-      {/* 🔥 ANIMATED BACKGROUND LINE */}
+      {/*  ANIMATED BACKGROUND LINE */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-[700px] h-[700px] bg-gradient-to-r from-cyan-400 via-purple-500 to-transparent blur-[140px] opacity-30 animate-[spin_20s_linear_infinite]"></div>
       </div>
 
-      {/* 🔥 SOFT RADIAL GLOW */}
+      {/* SOFT RADIAL GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,212,255,0.08),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(118,75,162,0.08),transparent_40%)]" />
 
-      {/* 🔥 CONTENT */}
+      {/*  CONTENT */}
       <div className="max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-16 items-center z-10">
         
         {/* LEFT */}
@@ -51,7 +51,7 @@ const Hero = () => {
             modern UI, and high-performance web applications.
           </motion.p>
 
-          {/* 🔥 BUTTONS FIXED */}
+          {/*  BUTTONS FIXED */}
           <div className="flex gap-4 pt-2">
             <button
               onClick={() =>
@@ -74,6 +74,18 @@ const Hero = () => {
             >
               Contact
             </button>
+       {/* resume Button */}
+       <a  href="/resume.pdf"
+        download="resume.pdf" 
+        className="px-6 py-3 rounded-full border border-cyan-400/40 text-cyan-300 hover:bg-cyan-400/10 hover:scale-195 transition" 
+       >
+        Resume
+       </a>
+
+
+
+
+
           </div>
         </div>
 

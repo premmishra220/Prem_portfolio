@@ -8,6 +8,8 @@ const navItems = [
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Certificates', href: '#certificates' },
+
 ];
 
 const Navbar = ({ theme, onToggleTheme }) => {
