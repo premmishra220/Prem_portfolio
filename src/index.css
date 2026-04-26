@@ -2,29 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ BASE LAYER */
 @layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-dark-bg text-white font-inter;
+    @apply bg-black text-white antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: Inter, sans-serif;
+    overflow-x: hidden;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
   }
 }
 
-/* ✅ COMPONENTS */
 @layer components {
   .glass-card {
-    @apply bg-glass-bg backdrop-blur-md border border-white/10 rounded-2xl shadow-neon;
+    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-[28px];
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   .neon-text {
-    @apply text-neon-blue drop-shadow-lg;
+    background: linear-gradient(
+      90deg,
+      #22d3ee 0%,
+      #60a5fa 50%,
+      #a855f7 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-neon-blue to-neon-purple text-white font-semibold py-3 px-8 rounded-full shadow-neon hover:shadow-neon-purple transition-all duration-300 hover:scale-105;
+    @apply px-7 py-4 rounded-full font-medium transition-all duration-300;
+    background: white;
+    color: black;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    @apply px-7 py-4 rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-xl transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .section-padding {
-    @apply py-20 px-6 md:px-12 lg:px-24;
+    @apply py-28 px-6 md:px-12 lg:px-20;
+  }
+
+  .premium-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .premium-shadow {
+    box-shadow:
+      0 20px 80px rgba(0, 0, 0, 0.45),
+      0 4px 20px rgba(255, 255, 255, 0.02);
+  }
+
+  .text-muted {
+    color: rgba(255, 255, 255, 0.6);
   }
 }
