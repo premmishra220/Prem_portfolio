@@ -5,6 +5,9 @@ import dataScience  from "../assets/certificates/dataScience.png";
 import html         from  "../assets/certificates/html.png";
 import java         from  "../assets/certificates/java.png";
 import javascript   from   "../assets/certificates/javascript.png";
+import CSS3 from "../assets/certificates/CSS3.png";
+import Typescript from "../assets/certificates/Typescript.png";
+ 
 
 const Certificates = () => {
   const [ref, inView] = useInView({
@@ -28,6 +31,14 @@ const Certificates = () => {
     {
       title: "Html5 - Infosys",
       image: html,
+    },
+    {
+      title: "CSS3 - Infosys",
+      image: CSS3,
+    },
+    {
+      title: "Typescript - Infosys",
+      image: Typescript,
     },
   ];
 
