@@ -16,11 +16,10 @@ const Contact = () => {
     message: "",
   });
 
-  const API_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:5000/api/contacts"
-      : "https://prem-portfolio-eu9h.vercel.app/api/contacts";
-
+ const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/api/contacts"
+    : "https://prem-portfolio-zst6.vercel.app/api/contacts";
   const handleChange = (e) => {
     setFormData({
       ...formData,
