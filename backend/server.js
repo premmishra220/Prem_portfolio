@@ -10,27 +10,16 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://prem-portfolio-zst6.vercel.app",
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    origin: [
+      "http://localhost:5173",
+      "https://prem-portfolio-zst6.vercel.app",
+    ],
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
-
-app.options("*", cors());
 
 app.use(express.json());
 
@@ -40,4 +29,8 @@ app.get("/", (req, res) => {
   res.send("Backend Running");
 });
 
-export default app;
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
