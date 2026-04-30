@@ -30,7 +30,7 @@ const Contact = () => {
       setLoading(true);
 
       const response = await fetch(
-        "https://prem-portfolio-eu9h.vercel.app/api/contacts",
+        "https://prem-portfolio-eu9h.vercel.app/api/contact",
         {
           method: "POST",
           headers: {
