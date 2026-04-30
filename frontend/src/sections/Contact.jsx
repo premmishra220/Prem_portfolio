@@ -29,8 +29,8 @@ const Contact = () => {
     try {
       setLoading(true);
 
-     const response = await fetch(
-  "https://prem-portfolio-5o5c-f9c30a9ne-premmishra220s-projects.vercel.app/api/contacts",
+      const response = await fetch(
+        "https://prem-portfolio-eu9h.vercel.app/api/contacts",
         {
           method: "POST",
           headers: {
@@ -43,7 +43,7 @@ const Contact = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Message sent successfully");
+        alert("Message sent successfully!");
 
         setFormData({
           name: "",
@@ -51,10 +51,11 @@ const Contact = () => {
           message: "",
         });
       } else {
-        alert(data.message);
+        alert(data.message || "Failed to send message");
       }
     } catch (error) {
-      alert("Something went wrong");
+      console.error(error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
