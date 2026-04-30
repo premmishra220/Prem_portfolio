@@ -16,6 +16,11 @@ const Contact = () => {
     message: "",
   });
 
+  const API_URL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000/api/contacts"
+      : "https://prem-portfolio-eu9h.vercel.app/api/contacts";
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -29,16 +34,13 @@ const Contact = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(
-        "https://prem-portfolio-eu9h.vercel.app/api/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
 
