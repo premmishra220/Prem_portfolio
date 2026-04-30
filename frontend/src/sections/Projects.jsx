@@ -43,7 +43,7 @@ const Projects = () => {
   description: 'Worked on the frontend development of a large-scale printing management system during internship at Indux Technology. Contributed to building responsive UI pages using React, TypeScript, and Tailwind CSS, while collaborating within a full-stack architecture involving Node.js backend, PostgreSQL database, and Python-based print engine.',
   image: 'https://i.pinimg.com/1200x/05/16/4d/05164db46800fa4275708ae92df39222.jpg',
   tech: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Node.js'],
-  liveLink: '#',
+  liveLink: 'https://avcc.cloud/auth/signin',
   githubLink: 'https://github.com/Agroking-Store/proooo',
   period: 'Indux Technology Internship'
 }
