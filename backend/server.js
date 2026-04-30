@@ -6,7 +6,16 @@
   dotenv.config();
   connectDB();
   const app = express();
-  app.use(cors());
+  app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://prem-portfolio-zst6.vercel.app",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
   app.use(express.json());
   app.use("/api/contact", contactRoutes);
   const PORT = process.env.PORT||5000;
