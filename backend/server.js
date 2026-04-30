@@ -10,10 +10,9 @@
   cors({
     origin: [
       "http://localhost:5173",
-      "https://prem-portfolio-zst6.vercel.app",
+      "https://prem-portfolio-zst6.vercel.app"
     ],
-    methods: ["GET", "POST"],
-    credentials: true,
+    methods: ["GET", "POST"]
   })
 );
   app.use(express.json());
