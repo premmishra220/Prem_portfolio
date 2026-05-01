@@ -1,6 +1,4 @@
 import nodemailer from "nodemailer";
-import fs from "fs";
-import path from "path";
 
 export const sendMail = async (req, res) => {
   const { name, email, message } = req.body;
@@ -18,7 +16,7 @@ export const sendMail = async (req, res) => {
     ? [
         {
           filename: file.originalname,
-          path: path.resolve(file.path),
+          content: file.buffer,
         },
       ]
     : [];
@@ -39,18 +37,10 @@ export const sendMail = async (req, res) => {
     });
   } catch (error) {
     console.error("Email send error:", error);
+
     res.status(500).json({
       success: false,
       message: error.message || "Failed to send email with attachment.",
     });
-  } finally {
-    if (file && fs.existsSync(file.path)) {
-      try {
-        fs.unlinkSync(file.path);
-      } catch (unlinkError) {
-        console.error("Failed to remove temp upload:", unlinkError);
-      }
-    }
   }
 };
-  

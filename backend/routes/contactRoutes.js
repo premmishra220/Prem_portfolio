@@ -1,22 +1,16 @@
 import express from "express";
 import multer from "multer";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import { sendMail } from "../controllers/contactController.js";
 
 const router = express.Router();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const uploadsDir = path.join(__dirname, "../uploads");
-
-fs.mkdirSync(uploadsDir, { recursive: true });
+/* Vercel-safe memory storage */
+const storage = multer.memoryStorage();
 
 const upload = multer({
-  dest: uploadsDir,
+  storage,
   limits: {
-    fileSize: 20 * 1024 * 1024, // 20 MB max
+    fileSize: 20 * 1024 * 1024, // 20MB
   },
   fileFilter: (req, file, cb) => {
     const allowedMimeTypes = [
@@ -32,7 +26,11 @@ const upload = multer({
     if (allowedMimeTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error("Invalid file type. Only images, videos, and PDFs are allowed."));
+      cb(
+        new Error(
+          "Invalid file type. Only images, videos, and PDFs are allowed."
+        )
+      );
     }
   },
 });
@@ -49,6 +47,7 @@ router.post("/", (req, res, next) => {
         message: err.message || "File upload failed.",
       });
     }
+
     return sendMail(req, res);
   });
 });

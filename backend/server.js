@@ -10,6 +10,8 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
+"http://localhost:5174",
+
   "https://prem-portfolio-3xwd.vercel.app",
 ];
 
