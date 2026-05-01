@@ -38,14 +38,42 @@
     background: rgba(255, 255, 255, 0.12);
     border-radius: 999px;
   }
+
+  /* Safari input focus fix */
+  input,
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 2;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/10 rounded-[28px];
+    @apply bg-white/[0.04] border border-white/10 rounded-[28px];
+
+    /* Safari-safe blur */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    /* Touch/focus fix */
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+
     box-shadow:
       0 10px 40px rgba(0, 0, 0, 0.35),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* Prevent overlay blocking input clicks */
+  .glass-card::before,
+  .glass-card::after {
+    pointer-events: none;
   }
 
   .neon-text {
