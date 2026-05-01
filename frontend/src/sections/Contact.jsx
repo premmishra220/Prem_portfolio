@@ -9,6 +9,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -28,18 +29,28 @@ const Contact = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
 
+      const formPayload = new FormData();
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("message", formData.message);
+
+      if (file) {
+        formPayload.append("file", file);
+      }
+
       const response = await fetch(API_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formPayload,
       });
 
       const data = await response.json();
@@ -52,6 +63,8 @@ const Contact = () => {
           email: "",
           message: "",
         });
+
+        setFile(null);
       } else {
         alert(data.message || "Failed to send message");
       }
@@ -87,6 +100,7 @@ const Contact = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -99,11 +113,49 @@ const Contact = () => {
               </h3>
 
               <div className="space-y-6">
-                {/* content same */}
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center">
+                    📧
+                  </div>
+
+                  <div>
+                    <p className="text-gray-300">Email</p>
+                    <p className="text-white font-semibold">
+                      premmishrasonb@gmail.com
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-neon-purple/20 rounded-full flex items-center justify-center">
+                    📞
+                  </div>
+
+                  <div>
+                    <p className="text-gray-300">Phone</p>
+                    <p className="text-white font-semibold">
+                      9693146943
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                    📍
+                  </div>
+
+                  <div>
+                    <p className="text-gray-300">Location</p>
+                    <p className="text-white font-semibold">
+                      Pune, Maharashtra
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -130,7 +182,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     style={{ WebkitAppearance: "none" }}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400"
                     placeholder="Your Name"
                   />
                 </div>
@@ -149,7 +201,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     style={{ WebkitAppearance: "none" }}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -167,8 +219,21 @@ const Contact = () => {
                     required
                     rows="5"
                     style={{ WebkitAppearance: "none" }}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400 transition-colors duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-neon-blue focus:outline-none text-white placeholder-gray-400 resize-none"
                     placeholder="Your message here..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-300 mb-2">
+                    Upload Image / Video / PDF
+                  </label>
+
+                  <input
+                    type="file"
+                    accept="image/*,video/*,application/pdf"
+                    onChange={handleFileChange}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white"
                   />
                 </div>
 
