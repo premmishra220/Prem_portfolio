@@ -1,94 +1,114 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Skills = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
-  const skills = [
-    { name: 'React.js', level: 90, color: 'from-blue-500 to-cyan-500' },
-    { name: 'Node.js', level: 85, color: 'from-green-500 to-emerald-500' },
-    { name: 'Next.js', level: 80, color: 'from-blue-400 to-blue-600' },
-    { name: 'MongoDB', level: 80, color: 'from-green-400 to-green-600' },
-    { name: 'Express.js', level: 85, color: 'from-gray-500 to-gray-700' },
-    { name: 'JavaScript', level: 90, color: 'from-yellow-400 to-yellow-600' },
-    { name: 'Python', level: 75, color: 'from-blue-400 to-blue-600' },
-    { name: 'HTML/CSS', level: 95, color: 'from-orange-400 to-red-500' },
-    { name: 'Git/GitHub', level: 85, color: 'from-purple-500 to-pink-500' },
+  const skillCategories = [
+    {
+      title: "Frontend",
+      skills: [
+        "React.js",
+        "Next.js",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "REST APIs",
+        "JWT Auth",
+      ],
+    },
+    {
+      title: "Tools & Platforms",
+      skills: [
+        "Git",
+        "GitHub",
+        "Postman",
+        "VS Code",
+        "Vercel",
+      ],
+    },
+    {
+      title: "Currently Exploring",
+      skills: [
+        "OpenAI API",
+        "AI Agents",
+        "Python",
+        "Machine Learning",
+      ],
+    },
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gradient-to-b from-dark-bg to-gray-900">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="skills"
+      className="relative section-padding bg-black overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.08),transparent_35%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.08),transparent_35%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold mb-6">
-            My <span className="neon-text">Skills</span>
+          <p className="text-cyan-400 tracking-[0.3em] uppercase text-sm mb-4">
+            Expertise
+          </p>
+
+          <h2 className="text-5xl md:text-6xl font-semibold leading-tight">
+            Tech Stack &
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
+              Development Skills
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Technologies and tools I work with to bring ideas to life
+
+          <p className="mt-6 text-white/60 max-w-2xl mx-auto text-lg">
+            Building scalable full-stack applications with modern technologies,
+            premium UI experiences, and performance-focused architecture.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => (
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 50 }}
+              key={category.title}
+              initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-card p-6"
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className="rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-8 hover:border-cyan-400/20 transition-all duration-500"
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-                <span className="text-neon-blue font-bold">{skill.level}%</span>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                <motion.div
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: `${skill.level}%` } : {}}
-                  transition={{ duration: 1.5, delay: index * 0.1 + 0.3, ease: "easeOut" }}
-                />
+              <h3 className="text-2xl font-semibold mb-8 text-white">
+                {category.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-4">
+                {category.skills.map((skill) => (
+                  <motion.div
+                    key={skill}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.04] text-white/80 hover:text-white hover:border-cyan-400/30 hover:bg-cyan-400/10 transition-all duration-300"
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-3xl font-bold mb-8 neon-text">Tech Stack</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'React', 'Node.js', 'MongoDB', 'Express', 'JavaScript', 'Python',
-              'HTML5', 'CSS3', 'Tailwind CSS', 'Git', 'VS Code', 'Postman'
-            ].map((tech, index) => (
-              <motion.span
-                key={tech}
-                className="px-4 py-2 bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/30 rounded-full text-sm font-medium text-white hover:border-neon-blue transition-colors duration-300"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.05 + 1 }}
-                whileHover={{ scale: 1.1, borderColor: '#00d4ff' }}
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
