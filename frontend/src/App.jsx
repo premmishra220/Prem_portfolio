@@ -80,10 +80,10 @@ function App() {
   return (
     <div className="min-h-screen bg-dark-bg text-white overflow-x-hidden">
 
-      {/* ✅ Loader Overlay */}
+      {/*  Loader Overlay */}
       {isLoading && <Loading />}
 
-      {/* ✅ Main Content */}
+      {/*  Main Content */}
       <div
         className={`${
           isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
@@ -91,7 +91,7 @@ function App() {
       >
         <Navbar theme={theme} onToggleTheme={toggleTheme} />
 
-        {/* ⚠️ Agar future me issue aaye to isko comment kar */}
+        {/*  */}
         <CursorGlow />
 
         <main className="relative pt-24">

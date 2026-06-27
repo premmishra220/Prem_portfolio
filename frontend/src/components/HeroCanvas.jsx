@@ -62,8 +62,7 @@ const HeroCanvas = () => (
       camera={{ position: [0, 1.2, 6], fov: 32 }}
       className="w-full h-full"
     >
-      {/* ❌ REMOVE BLACK BACKGROUND */}
-      {/* <color attach="background" args={['#02020a']} /> */}
+     
 
       <ambientLight intensity={0.35} />
       <pointLight position={[4, 3, 5]} intensity={1.2} color="#00d4ff" />
