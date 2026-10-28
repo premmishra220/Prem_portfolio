@@ -89,13 +89,13 @@ const Hero = () => {
 
               <div className="flex gap-8 mt-14">
                 <div>
-                  <h3 className="text-3xl font-semibold">10+</h3>
+                  <h3 className="text-3xl font-semibold">5+</h3>
                   <p className="text-white/50 text-sm mt-2">Projects Built</p>
                 </div>
 
                 <div>
-                  <h3 className="text-3xl font-semibold">1+</h3>
-                  <p className="text-white/50 text-sm mt-2">Years Experience</p>
+                  <h3 className="text-3xl font-semibold">6</h3>
+                  <p className="text-white/50 text-sm mt-2">Months Experience</p>
                 </div>
 
                 <div>
