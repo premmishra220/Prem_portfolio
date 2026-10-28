@@ -12,11 +12,11 @@ const Loading = () => {
         />
 
         <motion.h2 className="text-2xl font-bold text-neon-blue">
-          Loading Portfolio...
+          Welcome to My Portfolio
         </motion.h2>
 
         <p className="text-gray-400 mt-2">
-          Preparing an amazing experience
+          Plese wait while we prepare everything for you
         </p>
 
       </div>

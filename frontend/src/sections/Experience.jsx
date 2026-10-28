@@ -9,65 +9,51 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: 'MERN Stack Developer Intern',
+      title: 'Backend Developer Intern - Spring Boot',
       company: 'Indux Technology',
       location: 'Pune, Maharashtra',
-      period: 'Current',
+      period: 'Feb 2026 - May 2026',
       description: [
-        'Completed a 1-month internship and continuing as an active MERN Stack Developer intern',
-        'Built and worked on full-stack applications using MongoDB, Express.js, React.js, and Node.js',
-        'Developed and tested REST APIs and implemented authentication and authorization features',
-        'Collaborated using Git & GitHub and improved UI responsiveness and overall performance'
+        'Developed backend modules using Java and Spring Boot with Controller-Service-Repository architecture',
+        'Built and tested RESTful APIs and implemented authentication and authorization using Spring Security and JWT',
+        'Worked with Spring Data JPA for entity management and database operations',
+        'Used Git, GitHub, and Postman for version control, API testing, debugging, and backend development'
       ]
     },
-
-
-
-
-
-
-
 
     {
       title: 'Bachelor of Engineering (Information Technology)',
       company: 'Sinhgad Institute of Technology',
-      location: 'Pune',
+      location: 'Pune, Maharashtra',
       period: '2023 - 2027',
       description: [
-        'Currently pursuing B.E. in Information Technology',
-        'Focus on software development, data structures, and algorithms',
-        'Active in coding competitions and hackathons'
+        'Currently pursuing B.E. in Information Technology with a CGPA of 7.01/10.0',
+        'Building strong foundations in Java, Data Structures, Algorithms, DBMS, and Software Development',
+        'Developing practical experience through backend projects, coding practice, and hackathons'
       ]
     },
-   {
-    title: 'Higher Secondary (12th)',
-    company: 'Lakha Interstariya Madhya Vidyalaya, Barni (Bhojpur, Bihar)',
-    location: 'Bihar Board',
-    period: 'Completed',
-    description: [
-      'Completed 12th from Bihar Board',
-      'Secured 66.7% marks',
-      
-    ]
-  },
 
-  {
-    title: 'Secondary (10th)',
-    company: 'Delhi Model Public School, Kulharia (Ara, Bihar)',
-    location: 'CBSE Board',
-    period: 'Completed',
-    description: [
-      'Completed 10th from CBSE Board',
-      'Secured 65% marks',
-      
-    ]
-  }
+    {
+      title: 'Higher Secondary (12th)',
+      company: 'Lakha Interstariya Madhya Vidyalaya, Barni (Bhojpur, Bihar)',
+      location: 'Bihar Board',
+      period: '2022',
+      description: [
+        'Completed Higher Secondary education from Bihar Board',
+        'Secured 66.7% marks'
+      ]
+    },
 
-
-
-
-
-
+    {
+      title: 'Secondary (10th)',
+      company: 'Delhi Model Public School, Kulharia (Ara, Bihar)',
+      location: 'CBSE Board',
+      period: '2020',
+      description: [
+        'Completed Secondary education from CBSE Board',
+        'Secured 65.0% marks'
+      ]
+    }
   ];
 
   return (

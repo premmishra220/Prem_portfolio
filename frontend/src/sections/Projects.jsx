@@ -9,53 +9,42 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Learnify',
-      description: 'A comprehensive Learning Management System built with MERN stack, featuring JWT authentication, role-based access control, and responsive design.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-      tech: ['React', 'Node.js', 'MongoDB', 'JWT'],
+      title: 'CivicConnect - Civic Issue Reporting & Management System',
+      description:
+        'A Spring Boot based civic issue reporting platform with REST APIs, role-based authorization, JWT authentication, department assignment, status tracking, and resolution workflows.',
+      image:
+        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400',
+      tech: ['Java', 'Spring Boot', 'MongoDB', 'Spring Security', 'JWT'],
       liveLink: '#',
-      githubLink: 'https://github.com/premmishra220/full-stack-lms',
-      
+      githubLink: '#',
+      period: 'Java / Spring Boot Project'
     },
+
     {
-      title: 'AI-Powered SaaS',
-      description: 'Web application using Cloudinary AI for social media image optimization with dynamic aspect ratios and seamless authentication.',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400',
-      tech: ['Next.js', 'Prisma', 'Cloudinary AI'],
-      liveLink: '#',
-      githubLink: 'https://github.com/premmishra220/AI_SAAS.git',
-      period: 'Dec 2025 – Mar 2026'
+      title: 'Hotel Online Booking System',
+      description:
+        'A full-stack hotel booking platform built with Spring Boot and MySQL, supporting room search, availability, booking history, secure authentication, and Admin/User management.',
+      image:
+        'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
+      tech: ['Java', 'Spring Boot', 'MySQL', 'JPA/Hibernate', 'JWT'],
+      liveLink: ' https://hotel-management-system-six-beta.vercel.app/                                         ',
+      githubLink: ' https://github.com/premmishra220/hotel-management-system                            ',
+      period: 'Spring Boot Project'
     },
+
     {
-      title: 'Indux CRM',
-      description: 'Collection of full-stack applications developed during internship, focusing on REST APIs, authentication, and UI responsiveness.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400',
-      tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-      liveLink: 'https://induxcrm.induxtechnology.com/dashboard',
-      githubLink: 'https://github.com/Agroking-Store/induxCRM.git      ',
-      period: 'Ongoing Internship'
-    },
-    {
-  
-  
-  
-  title: 'PrintPro - Printing Management System',
-  description: 'Worked on the frontend development of a large-scale printing management system during internship at Indux Technology. Contributed to building responsive UI pages using React, TypeScript, and Tailwind CSS, while collaborating within a full-stack architecture involving Node.js backend, PostgreSQL database, and Python-based print engine.',
-  image: 'https://i.pinimg.com/1200x/05/16/4d/05164db46800fa4275708ae92df39222.jpg',
-  tech: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Node.js'],
-  liveLink: 'https://avcc.cloud/auth/signin',
-  githubLink: 'https://github.com/Agroking-Store/proooo',
-  period: 'Indux Technology Internship'
-}
-  
+      title: 'Veyora - Full Stack E-Commerce Platform',
+      description:
+        'A full-stack e-commerce platform featuring product listing, shopping cart, inventory management, order tracking, Admin Dashboard, and JWT-based authentication.',
+      image:
+        'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+      liveLink: ' https://veyora-kappa.vercel.app/                        ',
+      githubLink: '           https://github.com/premmishra220/veyora             ',
+      period: 'Full Stack Project'
+    }
 
-
-
-
-
-
-
-
+    
   ];
 
   return (
@@ -71,9 +60,11 @@ const Projects = () => {
           <h2 className="text-5xl font-bold mb-6">
             My <span className="neon-text">Projects</span>
           </h2>
+
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mb-8"></div>
+
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            A showcase of my recent work and contributions
+            A showcase of my backend, full-stack, and software development projects
           </p>
         </motion.div>
 
@@ -93,6 +84,7 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
@@ -100,14 +92,21 @@ const Projects = () => {
                 <h3 className="text-xl font-bold mb-2 text-white group-hover:text-neon-blue transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 mb-4 text-sm">{project.period}</p>
+
+                <p className="text-gray-300 mb-4 text-sm">
+                  {project.period}
+                </p>
+
                 <p className="text-gray-300 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-1 bg-neon-blue/20 text-neon-blue rounded text-xs font-medium">
+                    <span
+                      key={tech}
+                      className="px-2 py-1 bg-neon-blue/20 text-neon-blue rounded text-xs font-medium"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -122,6 +121,7 @@ const Projects = () => {
                   >
                     Live Demo
                   </motion.a>
+
                   <motion.a
                     href={project.githubLink}
                     className="flex-1 border border-neon-blue text-neon-blue py-2 px-4 rounded-lg text-center font-medium hover:bg-neon-blue hover:text-white transition-all duration-300"
@@ -140,4 +140,4 @@ const Projects = () => {
   );
 };
 
-export default Projects 
+export default Projects;

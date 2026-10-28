@@ -1,3 +1,4 @@
+
 import AnimatedBackground from "../components/AnimatedBackground";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -24,7 +25,7 @@ const Hero = () => {
               >
                 <div className="w-2 h-2 rounded-full bg-cyan-400" />
                 <span className="text-sm text-white/70 tracking-[0.2em] uppercase">
-                  Full Stack Developer
+                  Spring Boot Developer
                 </span>
               </motion.div>
 
@@ -35,11 +36,11 @@ const Hero = () => {
               >
                 Building
                 <br />
-                scalable web
+                scalable backend
                 <br />
-                applications with
+                systems with
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
-                  modern backend
+                  Spring Boot
                 </span>
               </motion.h1>
 
@@ -48,9 +49,10 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed"
               >
-                Full-stack developer specializing in MERN Stack, Next.js, and
-                modern backend systems. Currently exploring OpenAI integrations
-                and building scalable, performance-driven web products.
+                Backend developer specializing in Java, Spring Boot, REST APIs,
+                Spring Security, and MySQL. Also experienced in MERN Stack and
+                modern full-stack development, with a focus on building
+                scalable and performance-driven web applications.
               </motion.p>
 
               <div className="flex flex-wrap gap-4 mt-10">

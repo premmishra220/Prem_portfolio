@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -8,6 +9,18 @@ const Skills = () => {
   });
 
   const skillCategories = [
+    {
+      title: "Backend",
+      skills: [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "REST APIs",
+        "JPA",
+        "Hibernate",
+        "MySQL",
+      ],
+    },
     {
       title: "Frontend",
       skills: [
@@ -20,13 +33,13 @@ const Skills = () => {
       ],
     },
     {
-      title: "Backend",
+      title: "MERN Stack",
       skills: [
         "Node.js",
         "Express.js",
         "MongoDB",
-        "REST APIs",
         "JWT Auth",
+        "REST APIs",
       ],
     },
     {
@@ -37,15 +50,7 @@ const Skills = () => {
         "Postman",
         "VS Code",
         "Vercel",
-      ],
-    },
-    {
-      title: "Currently Exploring",
-      skills: [
-        "OpenAI API",
-        "AI Agents",
-        "Python",
-        "Machine Learning",
+        "Docker",
       ],
     },
   ];
@@ -77,8 +82,8 @@ const Skills = () => {
           </h2>
 
           <p className="mt-6 text-white/60 max-w-2xl mx-auto text-lg">
-            Building scalable full-stack applications with modern technologies,
-            premium UI experiences, and performance-focused architecture.
+            Building scalable backend systems with Java and Spring Boot,
+            while also experienced in modern full-stack and MERN development.
           </p>
         </motion.div>
 
