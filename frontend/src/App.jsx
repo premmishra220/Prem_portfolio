@@ -86,7 +86,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-2 sm:p-4 md:p-6"
             onClick={() => setShowResumeModal(false)}
           >
             <motion.div
@@ -95,32 +95,32 @@ function App() {
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl h-[88vh] rounded-3xl overflow-hidden border border-white/10 bg-[#0c0c0e] shadow-2xl flex flex-col"
+              className="relative w-full max-w-5xl h-[92vh] sm:h-[88vh] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-[#0c0c0e] shadow-2xl flex flex-col"
             >
               {/* Modal Bar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#0e0e12]">
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#e5b85c]" />
-                  <h3 className="font-display font-bold text-base md:text-lg text-[#f4f4f5]">
-                    Prem Mishra — Curriculum Vitae
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/[0.08] bg-[#0e0e12] gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <span className="w-2 h-2 rounded-full bg-[#e5b85c] flex-shrink-0" />
+                  <h3 className="font-display font-bold text-xs sm:text-base md:text-lg text-[#f4f4f5] truncate">
+                    Prem Mishra — CV
                   </h3>
-                  <span className="hidden sm:inline font-mono text-[10px] text-white/40 tracking-wider">
+                  <span className="hidden md:inline font-mono text-[10px] text-white/40 tracking-wider">
                     (JAVA BACKEND DEVELOPER)
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                   <a
                     href="/resume.pdf"
                     download="Prem_Mishra_Resume.pdf"
-                    className="btn-primary !px-4 !py-1.5 !text-xs font-mono tracking-wider"
+                    className="btn-primary !px-3 sm:!px-4 !py-1.5 !text-[10px] sm:!text-xs font-mono tracking-wider"
                   >
                     DOWNLOAD PDF ↓
                   </a>
 
                   <button
                     onClick={() => setShowResumeModal(false)}
-                    className="w-8 h-8 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors font-mono text-xs"
+                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors font-mono text-xs"
                     aria-label="Close modal"
                   >
                     ✕

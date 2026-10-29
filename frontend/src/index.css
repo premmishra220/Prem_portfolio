@@ -13,6 +13,10 @@
     scroll-behavior: smooth;
     background-color: #080808;
     color: #f4f4f5;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -20,9 +24,17 @@
     color: #f4f4f5;
     font-family: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
     letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Safe text wrapping on small screens */
+  h1, h2, h3, h4, h5, h6, p, a, span {
+    overflow-wrap: break-word;
   }
 
   ::selection {
@@ -53,6 +65,7 @@
   select {
     -webkit-appearance: none;
     appearance: none;
+    font-size: 16px; /* Prevents auto-zoom on iOS inputs */
   }
 }
 
@@ -96,7 +109,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all duration-300;
+    @apply inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 text-center;
     background: #f4f4f5;
     color: #080808;
   }
@@ -109,7 +122,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 rounded-full font-medium text-sm tracking-wide border border-white/15 bg-white/[0.03] text-white/90 backdrop-blur-xl transition-all duration-300;
+    @apply inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-medium text-xs sm:text-sm tracking-wide border border-white/15 bg-white/[0.03] text-white/90 backdrop-blur-xl transition-all duration-300 text-center;
   }
 
   .btn-secondary:hover {
@@ -120,7 +133,7 @@
   }
 
   .section-padding {
-    @apply py-24 md:py-32 px-6 md:px-12 lg:px-20;
+    @apply py-14 sm:py-20 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20;
   }
 
   .editorial-tag {

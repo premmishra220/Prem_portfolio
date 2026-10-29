@@ -147,7 +147,7 @@ const Projects = () => {
   });
 
   return (
-    <section id="work" className="section-padding border-t border-white/[0.08] relative">
+    <section id="work" className="section-padding border-t border-white/[0.08] relative overflow-hidden">
       <div id="projects" className="absolute -top-24 pointer-events-none" />
       <div className="max-w-7xl mx-auto" ref={ref}>
         {/* Section Eyebrow & Number */}
@@ -155,9 +155,9 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-10"
+          className="flex items-center gap-2.5 sm:gap-3 mb-6 sm:mb-10"
         >
-          <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#e5b85c]">
+          <span className="font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-[0.25em] uppercase text-[#e5b85c]">
             04 / Selected Portfolio
           </span>
           <div className="h-[1px] flex-1 bg-white/[0.08]" />
@@ -168,25 +168,25 @@ const Projects = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mb-20 md:mb-28 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mb-14 sm:mb-20 md:mb-28 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <h2 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase text-[#f4f4f5] leading-[0.9]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight uppercase text-[#f4f4f5] leading-[0.95] sm:leading-[0.9]">
               SELECTED
               <br />
               <span className="text-[#e5b85c]">WORK</span>
             </h2>
-            <p className="font-mono text-xs text-[#94949e] uppercase tracking-[0.2em] mt-4">
+            <p className="font-mono text-[10px] sm:text-xs text-[#94949e] uppercase tracking-wider sm:tracking-[0.2em] mt-3 sm:mt-4">
               04 PRODUCTION & ARCHITECTURAL CASE STUDIES
             </p>
           </div>
-          <p className="max-w-md text-sm text-[#94949e] font-light leading-relaxed">
+          <p className="max-w-md text-xs sm:text-sm text-[#94949e] font-light leading-relaxed">
             Every project represents a real architectural implementation with emphasis on clean separation of concerns, secure authentication pipelines, and resilient persistence.
           </p>
         </motion.div>
 
         {/* PROJECTS CASE STUDIES (EDITORIAL STORYTELLING FLOW) */}
-        <div className="space-y-28 md:space-y-40">
+        <div className="space-y-16 sm:space-y-28 md:space-y-40">
           {projects.map((project, index) => {
             const isLatest = project.featured;
 
@@ -197,31 +197,31 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8 }}
-                className={`relative rounded-3xl md:rounded-[40px] border transition-all duration-500 overflow-hidden ${
+                className={`relative rounded-2xl sm:rounded-3xl md:rounded-[40px] border transition-all duration-500 overflow-hidden ${
                   isLatest
-                    ? "border-[#e5b85c]/40 bg-[#0e0e12] shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16 ring-1 ring-[#e5b85c]/20"
-                    : "border-white/[0.08] bg-[#0c0c0e]/80 p-6 sm:p-8 md:p-12"
+                    ? "border-[#e5b85c]/40 bg-[#0e0e12] shadow-2xl p-4 sm:p-8 md:p-12 lg:p-16 ring-1 ring-[#e5b85c]/20"
+                    : "border-white/[0.08] bg-[#0c0c0e]/80 p-4 sm:p-8 md:p-12"
                 }`}
               >
                 {/* Background Ambient Glow for Latest Project */}
                 {isLatest && (
-                  <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#e5b85c]/[0.07] rounded-full blur-[140px] pointer-events-none" />
+                  <div className="absolute -top-32 -right-32 w-80 sm:w-96 h-80 sm:h-96 bg-[#e5b85c]/[0.07] rounded-full blur-[120px] pointer-events-none" />
                 )}
 
                 {/* Top Metadata Header */}
-                <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-white/[0.08]">
-                  <div className="flex items-center gap-4">
-                    <span className="font-display text-4xl sm:text-5xl font-extrabold text-[#e5b85c]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-white/[0.08]">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <span className="font-display text-3xl sm:text-5xl font-extrabold text-[#e5b85c] flex-shrink-0">
                       {project.number}
                     </span>
-                    <div>
-                      <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#94949e]">
+                    <div className="min-w-0">
+                      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.25em] text-[#94949e] block break-words">
                         {project.category}
                       </span>
                       {isLatest && (
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="w-2 h-2 rounded-full bg-[#e5b85c] animate-pulse" />
-                          <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#e5b85c]">
+                        <div className="flex items-center gap-1.5 sm:gap-2 mt-1">
+                          <span className="w-2 h-2 rounded-full bg-[#e5b85c] animate-pulse flex-shrink-0" />
+                          <span className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-[0.25em] text-[#e5b85c]">
                             LATEST PROJECT
                           </span>
                         </div>
@@ -230,13 +230,13 @@ const Projects = () => {
                   </div>
 
                   {/* Links in Header */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     {project.liveLink && (
                       <a
                         href={project.liveLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-primary !px-5 !py-2 !text-xs font-mono tracking-wider"
+                        className="btn-primary !px-3.5 sm:!px-5 !py-1.5 sm:!py-2 !text-[11px] sm:!text-xs font-mono tracking-wider"
                       >
                         LIVE DEMO ↗
                       </a>
@@ -246,7 +246,7 @@ const Projects = () => {
                         href={project.githubLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-secondary !px-5 !py-2 !text-xs font-mono tracking-wider"
+                        className="btn-secondary !px-3.5 sm:!px-5 !py-1.5 sm:!py-2 !text-[11px] sm:!text-xs font-mono tracking-wider"
                       >
                         GITHUB ↗
                       </a>
@@ -255,7 +255,7 @@ const Projects = () => {
                 </div>
 
                 {/* Main Content Layout */}
-                <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
                   {/* Left Column: Visual Showcase & Architecture Table */}
                   <div className={`lg:col-span-6 space-y-6 ${index % 2 === 1 && !isLatest ? "lg:order-2" : ""}`}>
                     {/* Visual Area */}
@@ -275,10 +275,10 @@ const Projects = () => {
 
                         {/* CivicConnect YOLO AI Telemetry Overlay */}
                         {project.id === "civicconnect" && (
-                          <div className="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[10px] pointer-events-none">
-                            <span className="px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                              YOLO AI: Pothole Defect Detected (98.4%)
+                          <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3 sm:left-3 sm:right-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] pointer-events-none">
+                            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 flex items-center gap-1.5 max-w-full truncate">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
+                              YOLO AI: Pothole Defect (98.4%)
                             </span>
                             <span className="px-2 py-1 rounded-md bg-black/85 backdrop-blur-md border border-white/10 text-white/60 hidden sm:inline">
                               CIVIC REPORT #CC-2026
@@ -287,11 +287,11 @@ const Projects = () => {
                         )}
 
                         {/* Overlay Tag */}
-                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs">
-                          <span className="px-3 py-1 rounded-full bg-[#080808]/85 backdrop-blur-md border border-white/10 text-white/80">
+                        <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between font-mono text-[10px] sm:text-xs">
+                          <span className="px-2.5 sm:px-3 py-1 rounded-full bg-[#080808]/85 backdrop-blur-md border border-white/10 text-white/80">
                             {project.title}
                           </span>
-                          <span className="px-3 py-1 rounded-full bg-[#e5b85c]/10 backdrop-blur-md border border-[#e5b85c]/30 text-[#e5b85c]">
+                          <span className="px-2.5 sm:px-3 py-1 rounded-full bg-[#e5b85c]/10 backdrop-blur-md border border-[#e5b85c]/30 text-[#e5b85c]">
                             CASE STUDY
                           </span>
                         </div>
@@ -299,30 +299,30 @@ const Projects = () => {
                     </div>
 
                     {/* Architecture Matrix Highlights */}
-                    <div className="p-5 rounded-2xl border border-white/[0.08] bg-[#080808]/60 space-y-3 font-mono text-xs">
-                      <p className="text-[11px] uppercase tracking-[0.2em] text-[#e5b85c] mb-2 font-semibold">
+                    <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.08] bg-[#080808]/60 space-y-2.5 sm:space-y-3 font-mono text-xs">
+                      <p className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.2em] text-[#e5b85c] mb-2 font-semibold">
                         Technical Architecture Matrix
                       </p>
                       {project.architectureHighlights.map((arch) => (
-                        <div key={arch.label} className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                          <span className="text-white/40">{arch.label}</span>
-                          <span className="text-[#f4f4f5] text-right font-medium">{arch.value}</span>
+                        <div key={arch.label} className="flex flex-col sm:flex-row sm:items-center justify-between py-1.5 gap-0.5 sm:gap-2 border-b border-white/[0.04]">
+                          <span className="text-white/40 text-[10px] sm:text-xs">{arch.label}</span>
+                          <span className="text-[#f4f4f5] sm:text-right font-medium text-[11px] sm:text-xs break-words">{arch.value}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* API Endpoints Showcase (Specifically for EdTech-CRM) */}
                     {isLatest && project.apiEndpoints && (
-                      <div className="p-5 rounded-2xl border border-[#e5b85c]/20 bg-[#0e0e12] space-y-3 font-mono text-xs">
-                        <p className="text-[11px] uppercase tracking-[0.2em] text-[#e5b85c] font-semibold">
+                      <div className="p-4 sm:p-5 rounded-2xl border border-[#e5b85c]/20 bg-[#0e0e12] space-y-3 font-mono text-xs">
+                        <p className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.2em] text-[#e5b85c] font-semibold">
                           Core REST Endpoints Implementation
                         </p>
                         <div className="space-y-2">
                           {project.apiEndpoints.map((api) => (
-                            <div key={api.path + api.method} className="p-2.5 rounded-lg bg-black/50 border border-white/[0.04]">
-                              <div className="flex items-center gap-2 mb-1">
+                            <div key={api.path + api.method} className="p-2 sm:p-2.5 rounded-lg bg-black/50 border border-white/[0.04]">
+                              <div className="flex items-center gap-2 mb-1 flex-wrap">
                                 <span
-                                  className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold ${
                                     api.method === "POST"
                                       ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
                                       : api.method === "GET"
@@ -332,9 +332,9 @@ const Projects = () => {
                                 >
                                   {api.method}
                                 </span>
-                                <span className="text-[#f4f4f5] font-semibold">{api.path}</span>
+                                <span className="text-[#f4f4f5] font-semibold text-[11px] sm:text-xs break-all">{api.path}</span>
                               </div>
-                              <p className="text-[11px] text-[#94949e] font-sans font-light">
+                              <p className="text-[10px] sm:text-[11px] text-[#94949e] font-sans font-light">
                                 {api.desc}
                               </p>
                             </div>
@@ -345,29 +345,29 @@ const Projects = () => {
                   </div>
 
                   {/* Right Column: Narrative, Key Features & Tech Badges */}
-                  <div className={`lg:col-span-6 space-y-8 ${index % 2 === 1 && !isLatest ? "lg:order-1" : ""}`}>
+                  <div className={`lg:col-span-6 space-y-6 sm:space-y-8 ${index % 2 === 1 && !isLatest ? "lg:order-1" : ""}`}>
                     <div>
-                      <h3 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-[#f4f4f5] leading-tight">
+                      <h3 className="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl tracking-tight text-[#f4f4f5] leading-tight">
                         {project.title}
                       </h3>
-                      <p className="font-mono text-xs sm:text-sm text-[#e5b85c] mt-2 uppercase tracking-wider">
+                      <p className="font-mono text-xs sm:text-sm text-[#e5b85c] mt-2 uppercase tracking-wide sm:tracking-wider">
                         {project.subtitle}
                       </p>
                     </div>
 
-                    <p className="text-base md:text-lg text-[#94949e] font-light leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg text-[#94949e] font-light leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Key Architectural & Implementation Features */}
                     <div>
-                      <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 mb-4">
+                      <h4 className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-white/50 mb-3 sm:mb-4">
                         Key Architectural Features
                       </h4>
-                      <ul className="space-y-3 font-sans text-sm text-[#94949e]">
+                      <ul className="space-y-2.5 sm:space-y-3 font-sans text-xs sm:text-sm text-[#94949e]">
                         {project.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex items-start gap-3">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#e5b85c] mt-2 flex-shrink-0" />
+                          <li key={fIdx} className="flex items-start gap-2.5 sm:gap-3">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#e5b85c] mt-1.5 flex-shrink-0" />
                             <span className="leading-relaxed text-neutral-300 font-light">
                               {feature}
                             </span>
@@ -378,14 +378,14 @@ const Projects = () => {
 
                     {/* Technology Stack Badges */}
                     <div>
-                      <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
+                      <h4 className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] text-white/50 mb-2.5 sm:mb-3">
                         Technologies Implemented
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wide border ${
+                            className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-mono tracking-wide border ${
                               t.toLowerCase().includes("spring") || t.toLowerCase().includes("java")
                                 ? "border-[#e5b85c]/40 bg-[#e5b85c]/10 text-[#f3d082]"
                                 : "border-white/[0.08] bg-white/[0.02] text-white/70"
@@ -398,7 +398,7 @@ const Projects = () => {
                     </div>
 
                     {/* Action Links */}
-                    <div className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center gap-4">
+                    <div className="pt-4 sm:pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                       {project.githubLink && (
                         <a
                           href={project.githubLink}

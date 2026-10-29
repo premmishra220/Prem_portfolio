@@ -38,16 +38,16 @@ const Education = () => {
   });
 
   return (
-    <section id="education" className="section-padding border-t border-white/[0.08] relative">
+    <section id="education" className="section-padding border-t border-white/[0.08] relative overflow-hidden">
       <div className="max-w-7xl mx-auto" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-10"
+          className="flex items-center gap-2.5 sm:gap-3 mb-8 sm:mb-10"
         >
-          <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#e5b85c]">
+          <span className="font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-[0.25em] uppercase text-[#e5b85c]">
             06 / Academic Foundation
           </span>
           <div className="h-[1px] flex-1 bg-white/[0.08]" />
@@ -58,34 +58,34 @@ const Education = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mb-10 sm:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase text-[#f4f4f5]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl tracking-tight uppercase text-[#f4f4f5] leading-tight">
               EDUCATION
             </h2>
-            <p className="font-mono text-xs text-[#94949e] uppercase tracking-[0.2em] mt-3">
-              COMPUTER SCIENCE & INFORMATION TECHNOLOGY BACKGROUND
+            <p className="font-mono text-[10px] sm:text-xs text-[#94949e] uppercase tracking-wider sm:tracking-[0.2em] mt-2.5 sm:mt-3">
+              COMPUTER SCIENCE & IT ACADEMIC BACKGROUND
             </p>
           </div>
         </motion.div>
 
         {/* Minimal and Elegant Editorial List */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
           {educationList.map((edu, idx) => (
             <motion.div
               key={edu.degree}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 * idx }}
-              className={`p-6 md:p-8 rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
+              className={`p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
                 idx === 0
                   ? "border-[#e5b85c]/40 bg-[#0e0e12] ring-1 ring-[#e5b85c]/20"
                   : "border-white/[0.08] bg-[#0c0c0e]/70"
               }`}
             >
               <div>
-                <div className="flex items-center justify-between font-mono text-[10px] mb-4">
+                <div className="flex items-center justify-between font-mono text-[10px] mb-3 sm:mb-4">
                   <span
                     className={`px-2.5 py-0.5 rounded-full border ${
                       idx === 0
@@ -98,15 +98,15 @@ const Education = () => {
                   <span className="text-white/40">{edu.period}</span>
                 </div>
 
-                <h3 className="font-display font-bold text-xl text-[#f4f4f5] leading-snug mb-2">
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#f4f4f5] leading-snug mb-2">
                   {edu.degree}
                 </h3>
 
-                <p className="font-sans text-sm font-semibold text-[#e5b85c] mb-1">
+                <p className="font-sans text-xs sm:text-sm font-semibold text-[#e5b85c] mb-1">
                   {edu.institution}
                 </p>
 
-                <p className="font-mono text-xs text-white/40 mb-4">
+                <p className="font-mono text-[11px] sm:text-xs text-white/40 mb-3 sm:mb-4">
                   {edu.location}
                 </p>
 
@@ -115,7 +115,7 @@ const Education = () => {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/[0.06] font-mono text-xs font-semibold text-[#f4f4f5]">
+              <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.06] font-mono text-xs font-semibold text-[#f4f4f5]">
                 {edu.score}
               </div>
             </motion.div>

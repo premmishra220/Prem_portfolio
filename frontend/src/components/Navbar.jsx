@@ -14,7 +14,7 @@ const Navbar = ({ onOpenResume }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
 
     handleScroll();
@@ -39,21 +39,21 @@ const Navbar = ({ onOpenResume }) => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "py-4 bg-[#080808]/85 backdrop-blur-xl border-b border-white/[0.08]"
-            : "py-6 bg-transparent"
+            ? "py-3 sm:py-4 bg-[#080808]/85 backdrop-blur-xl border-b border-white/[0.08]"
+            : "py-4 sm:py-6 bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
           {/* Brand */}
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, "#home")}
             className="group flex flex-col"
           >
-            <span className="font-display text-base md:text-lg font-bold tracking-[0.18em] text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors duration-300">
+            <span className="font-display text-sm sm:text-base md:text-lg font-bold tracking-[0.14em] sm:tracking-[0.18em] text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors duration-300">
               PREM MISHRA
             </span>
-            <span className="font-mono text-[10px] tracking-[0.25em] text-[#94949e] uppercase -mt-0.5">
+            <span className="font-mono text-[9px] sm:text-[10px] tracking-wider sm:tracking-[0.25em] text-[#94949e] uppercase -mt-0.5">
               Java Backend Developer
             </span>
           </a>
@@ -85,10 +85,10 @@ const Navbar = ({ onOpenResume }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.03] text-white focus:outline-none"
+            className="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-full border border-white/10 bg-white/[0.03] text-white focus:outline-none"
             aria-label="Toggle menu"
           >
-            <div className="w-5 flex flex-col items-end space-y-1.5">
+            <div className="w-4.5 flex flex-col items-end space-y-1.5">
               <span
                 className={`block h-[1.5px] bg-white transition-all duration-300 ${
                   mobileMenuOpen ? "w-5 rotate-45 translate-y-2 bg-[#e5b85c]" : "w-5"
@@ -117,10 +117,10 @@ const Navbar = ({ onOpenResume }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#080808]/98 backdrop-blur-2xl md:hidden pt-28 px-8 flex flex-col justify-between pb-12"
+            className="fixed inset-0 z-40 bg-[#080808]/98 backdrop-blur-2xl md:hidden pt-20 px-6 sm:px-8 flex flex-col justify-between pb-8 overflow-y-auto"
           >
-            <div className="space-y-6">
-              <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#e5b85c] mb-6">
+            <div className="space-y-5">
+              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#e5b85c] mb-4">
                 Navigation
               </p>
               {navLinks.map((item, index) => (
@@ -133,9 +133,9 @@ const Navbar = ({ onOpenResume }) => {
                   <a
                     href={item.href}
                     onClick={(e) => handleLinkClick(e, item.href)}
-                    className="flex items-baseline justify-between border-b border-white/[0.08] pb-4 group"
+                    className="flex items-baseline justify-between border-b border-white/[0.08] pb-3.5 group"
                   >
-                    <span className="font-display text-2xl font-bold tracking-tight text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors">
+                    <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors">
                       {item.label}
                     </span>
                     <span className="font-mono text-xs text-white/30">
@@ -146,13 +146,13 @@ const Navbar = ({ onOpenResume }) => {
               ))}
 
               {onOpenResume && (
-                <div className="pt-4">
+                <div className="pt-3">
                   <button
                     onClick={() => {
                       setMobileMenuOpen(false);
                       onOpenResume();
                     }}
-                    className="w-full py-3.5 rounded-full border border-[#e5b85c]/40 text-[#e5b85c] font-mono text-xs tracking-wider bg-[#e5b85c]/5"
+                    className="w-full py-3 rounded-full border border-[#e5b85c]/40 text-[#e5b85c] font-mono text-xs tracking-wider bg-[#e5b85c]/5"
                   >
                     VIEW RESUME
                   </button>
@@ -160,7 +160,7 @@ const Navbar = ({ onOpenResume }) => {
               )}
             </div>
 
-            <div className="border-t border-white/[0.08] pt-6 flex items-center justify-between text-xs font-mono text-[#94949e]">
+            <div className="border-t border-white/[0.08] pt-5 mt-6 flex items-center justify-between text-[11px] font-mono text-[#94949e]">
               <span>PUNE, INDIA</span>
               <a
                 href="https://github.com/premmishra220"
