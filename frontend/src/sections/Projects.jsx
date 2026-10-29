@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import edtechImg from "../assets/edtech-crm.png";
+import civicImg from "../assets/civic-connect.jpg";
 
 const projects = [
   {
     number: "01",
     id: "civicconnect",
     title: "CivicConnect",
-    subtitle: "Civic Issue Reporting & Management System",
+    subtitle: "Civic Issue Reporting & Municipal Management System",
     category: "Distributed Backend & Machine Vision",
     featured: false,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
+    image: civicImg,
     description:
       "A Spring Boot based civic issue reporting platform engineered to streamline municipal issue tracking, automated department dispatching, and resolution verification with integrated computer vision.",
     tech: ["Java", "Spring Boot", "MongoDB", "Spring Security", "JWT", "BCrypt", "Cloudinary", "Python FastAPI", "YOLO"],
@@ -271,6 +272,19 @@ const Projects = () => {
                           className="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />
+
+                        {/* CivicConnect YOLO AI Telemetry Overlay */}
+                        {project.id === "civicconnect" && (
+                          <div className="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[10px] pointer-events-none">
+                            <span className="px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-300 flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                              YOLO AI: Pothole Defect Detected (98.4%)
+                            </span>
+                            <span className="px-2 py-1 rounded-md bg-black/85 backdrop-blur-md border border-white/10 text-white/60 hidden sm:inline">
+                              CIVIC REPORT #CC-2026
+                            </span>
+                          </div>
+                        )}
 
                         {/* Overlay Tag */}
                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs">
