@@ -1,118 +1,221 @@
-
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+const primaryBackendStack = [
+  {
+    name: "JAVA",
+    category: "Core Language",
+    description: "Object-Oriented Programming, Multithreading, Streams, Collections, Memory Management",
+    level: "Core Specialization",
+  },
+  {
+    name: "SPRING BOOT",
+    category: "Enterprise Framework",
+    description: "Layered architecture, Dependency Injection, Auto-configuration, Spring Boot 3.x",
+    level: "Core Specialization",
+  },
+  {
+    name: "SPRING SECURITY",
+    category: "Security & Auth",
+    description: "Stateless SecurityFilterChain, BCrypt hashing, DaoAuthenticationProvider, RBAC",
+    level: "Core Specialization",
+  },
+  {
+    name: "SPRING DATA JPA",
+    category: "Persistence & ORM",
+    description: "Hibernate, JPA Criteria Specifications, Repository pattern, Transactional integrity",
+    level: "Core Specialization",
+  },
+  {
+    name: "REST APIs",
+    category: "API Architecture",
+    description: "HTTP semantics, DTO pattern, Global exception handling, Payload validation",
+    level: "Core Specialization",
+  },
+  {
+    name: "JWT",
+    category: "Stateless Tokens",
+    description: "JJWT generation, Bearer token authorization headers, Filter interceptors",
+    level: "Core Specialization",
+  },
+  {
+    name: "MYSQL",
+    category: "Relational Database",
+    description: "ACID transactions, Schema modeling, Indexes, Foreign keys, Complex querying",
+    level: "Core Specialization",
+  },
+  {
+    name: "MONGODB",
+    category: "Document Database",
+    description: "NoSQL document collections, Spring Data MongoDB, Aggregation, Cloud Atlas",
+    level: "Core Specialization",
+  },
+];
+
+const secondaryStack = [
+  { name: "React.js", note: "Component architecture, hooks, state" },
+  { name: "JavaScript (ES6+)", note: "Asynchronous I/O, Promises, DOM" },
+  { name: "Node.js", note: "Server-side runtime, npm ecosystem" },
+  { name: "Express.js", note: "Middleware, REST routing, CORS" },
+];
+
+const toolsStack = [
+  { name: "Git", note: "Branching, rebasing, version control" },
+  { name: "GitHub", note: "CI/CD, code reviews, collaboration" },
+  { name: "Postman", note: "API testing, collections, environment variables" },
+  { name: "Maven", note: "Dependency resolution, build lifecycles" },
+];
+
 const Skills = () => {
   const [ref, inView] = useInView({
-    threshold: 0.2,
+    threshold: 0.15,
     triggerOnce: true,
   });
 
-  const skillCategories = [
-    {
-      title: "Backend",
-      skills: [
-        "Java",
-        "Spring Boot",
-        "Spring Security",
-        "REST APIs",
-        "JPA",
-        "Hibernate",
-        "MySQL",
-      ],
-    },
-    {
-      title: "Frontend",
-      skills: [
-        "React.js",
-        "Next.js",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Tailwind CSS",
-      ],
-    },
-    {
-      title: "MERN Stack",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JWT Auth",
-        "REST APIs",
-      ],
-    },
-    {
-      title: "Tools & Platforms",
-      skills: [
-        "Git",
-        "GitHub",
-        "Postman",
-        "VS Code",
-        "Vercel",
-        "Docker",
-      ],
-    },
-  ];
-
   return (
-    <section
-      id="skills"
-      className="relative section-padding bg-black overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.08),transparent_35%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.08),transparent_35%)]" />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <section id="skills" className="section-padding border-t border-white/[0.08] relative">
+      <div className="max-w-7xl mx-auto" ref={ref}>
+        {/* Section Header */}
         <motion.div
-          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-10"
+        >
+          <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#e5b85c]">
+            03 / Engineering Capabilities
+          </span>
+          <div className="h-[1px] flex-1 bg-white/[0.08]" />
+        </motion.div>
+
+        {/* Section Title */}
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <p className="text-cyan-400 tracking-[0.3em] uppercase text-sm mb-4">
-            Expertise
-          </p>
-
-          <h2 className="text-5xl md:text-6xl font-semibold leading-tight">
-            Tech Stack &
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
-              Development Skills
-            </span>
-          </h2>
-
-          <p className="mt-6 text-white/60 max-w-2xl mx-auto text-lg">
-            Building scalable backend systems with Java and Spring Boot,
-            while also experienced in modern full-stack and MERN development.
+          <div>
+            <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase text-[#f4f4f5]">
+              TECHNICAL <span className="text-[#e5b85c]">STACK</span>
+            </h2>
+            <p className="font-mono text-xs text-[#94949e] uppercase tracking-[0.2em] mt-3">
+              PRIMARY ARCHITECTURE: JAVA & SPRING BOOT BACKEND
+            </p>
+          </div>
+          <p className="max-w-md text-sm text-[#94949e] font-light leading-relaxed">
+            Specialized in designing resilient server architectures, high-performance API contracts, and secure database persistence.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: index * 0.15 }}
-              className="rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-8 hover:border-cyan-400/20 transition-all duration-500"
-            >
-              <h3 className="text-2xl font-semibold mb-8 text-white">
-                {category.title}
-              </h3>
+        {/* 1. PRIMARY BACKEND STACK (DOMINANT VISUAL FOCUS) */}
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-8 pb-3 border-b border-white/[0.08]">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#e5b85c] flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#e5b85c]" />
+              PRIMARY BACKEND STACK (CORE EXPERTISE)
+            </span>
+            <span className="font-mono text-[11px] text-white/40">
+              08 TECHNOLOGIES
+            </span>
+          </div>
 
-              <div className="flex flex-wrap gap-4">
-                {category.skills.map((skill) => (
-                  <motion.div
-                    key={skill}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.04] text-white/80 hover:text-white hover:border-cyan-400/30 hover:bg-cyan-400/10 transition-all duration-300"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {primaryBackendStack.map((tech, idx) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.05 * idx }}
+                className="group relative p-6 rounded-2xl md:rounded-3xl border border-white/[0.08] bg-[#0e0e11]/90 hover:border-[#e5b85c]/40 hover:bg-[#131317] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4 font-mono text-[10px]">
+                    <span className="text-white/40 uppercase tracking-widest">{tech.category}</span>
+                    <span className="text-[#e5b85c] font-semibold">0{idx + 1}</span>
+                  </div>
+
+                  <h3 className="font-display font-bold text-2xl tracking-tight text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors mb-3">
+                    {tech.name}
+                  </h3>
+
+                  <p className="text-xs text-[#94949e] leading-relaxed font-light">
+                    {tech.description}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between font-mono text-[10px]">
+                  <span className="text-white/40">SPECIALTY</span>
+                  <span className="text-[#e5b85c] tracking-wider">PRODUCTION READY</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* 2. SECONDARY STACK & TOOLS (ELEGANT EDITORIAL SPLIT) */}
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+          {/* Secondary Technologies */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="md:col-span-6 p-8 rounded-3xl border border-white/[0.08] bg-[#0e0e11]/50"
+          >
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/[0.08]">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#94949e]">
+                SECONDARY / FULL-STACK
+              </span>
+              <span className="font-mono text-[10px] text-white/30">CLIENT & RUNTIME</span>
+            </div>
+
+            <div className="space-y-4">
+              {secondaryStack.map((tech) => (
+                <div
+                  key={tech.name}
+                  className="flex items-baseline justify-between py-2 border-b border-white/[0.04] group hover:border-[#e5b85c]/20 transition-colors"
+                >
+                  <span className="font-display text-lg font-semibold text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors">
+                    {tech.name}
+                  </span>
+                  <span className="font-mono text-xs text-[#94949e]">
+                    {tech.note}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Tools & Workflow */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="md:col-span-6 p-8 rounded-3xl border border-white/[0.08] bg-[#0e0e11]/50"
+          >
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/[0.08]">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#94949e]">
+                ENGINEERING TOOLS
+              </span>
+              <span className="font-mono text-[10px] text-white/30">LIFECYCLE & TESTING</span>
+            </div>
+
+            <div className="space-y-4">
+              {toolsStack.map((tech) => (
+                <div
+                  key={tech.name}
+                  className="flex items-baseline justify-between py-2 border-b border-white/[0.04] group hover:border-[#e5b85c]/20 transition-colors"
+                >
+                  <span className="font-display text-lg font-semibold text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors">
+                    {tech.name}
+                  </span>
+                  <span className="font-mono text-xs text-[#94949e]">
+                    {tech.note}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

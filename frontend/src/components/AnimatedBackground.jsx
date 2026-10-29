@@ -1,91 +1,26 @@
 import { motion } from "framer-motion";
 
-const Ribbon = ({ className, duration, delay }) => {
-  return (
-    <motion.div
-      animate={{
-        x: ["-10%", "10%", "-10%"],
-        y: ["0%", "-5%", "0%"],
-        rotate: [0, 2, -2, 0],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      className={className}
-    />
-  );
-};
-
 const AnimatedBackground = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden bg-black">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-[#080808]">
+      {/* Subtle warm amber/gold atmospheric vignette */}
+      <div className="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[900px] h-[550px] rounded-full bg-gradient-to-b from-[#e5b85c]/[0.06] to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute top-[45%] -right-[15%] w-[600px] h-[600px] rounded-full bg-[#e5b85c]/[0.03] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[5%] -left-[10%] w-[500px] h-[500px] rounded-full bg-[#e5b85c]/[0.025] blur-[140px] pointer-events-none" />
 
-      <div className="absolute inset-0 bg-[#050505]" />
-
-      <Ribbon
-        duration={6}
-        delay={0}
-        className="
-          absolute
-          bottom-[8%]
-          left-[-10%]
-          w-[140%]
-          h-[180px]
-          opacity-70
-          blur-[18px]
-          rounded-[100%]
-          bg-gradient-to-r
-          from-cyan-300/40
-          via-purple-400/40
-          to-pink-400/30
-          rotate-[-8deg]
-        "
+      {/* Ultra-subtle architectural grid line texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '80px 80px',
+          maskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, #000 60%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 30%, #000 60%, transparent 100%)'
+        }}
       />
 
-      <Ribbon
-        duration={8}
-        delay={0.5}
-        className="
-          absolute
-          bottom-[16%]
-          left-[-5%]
-          w-[130%]
-          h-[130px]
-          opacity-50
-          blur-[16px]
-          rounded-[100%]
-          bg-gradient-to-r
-          from-pink-300/30
-          via-purple-400/35
-          to-cyan-300/25
-          rotate-[7deg]
-        "
-      />
-
-      <Ribbon
-        duration={7}
-        delay={1}
-        className="
-          absolute
-          bottom-[24%]
-          left-[5%]
-          w-[120%]
-          h-[90px]
-          opacity-30
-          blur-[14px]
-          rounded-[100%]
-          bg-gradient-to-r
-          from-cyan-200/20
-          via-purple-300/25
-          to-pink-300/20
-          rotate-[-4deg]
-        "
-      />
-
-      <div className="absolute inset-0 bg-black/35 backdrop-blur-[30px]" />
+      {/* Film grain / dark vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/40 via-transparent to-[#080808]" />
     </div>
   );
 };

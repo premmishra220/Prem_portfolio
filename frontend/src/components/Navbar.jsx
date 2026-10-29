@@ -1,93 +1,188 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
-  { label: "Certificates", href: "#certificates" },
+const navLinks = [
+  { label: "WORK", href: "#work", number: "01" },
+  { label: "ABOUT", href: "#about", number: "02" },
+  { label: "EXPERIENCE", href: "#experience", number: "03" },
+  { label: "CONTACT", href: "#contact", number: "04" },
 ];
 
-const Navbar = ({ theme, onToggleTheme }) => {
+const Navbar = ({ onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 40);
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-7xl rounded-3xl transition-all duration-500 ${
-        isScrolled
-          ? "border border-white/10 bg-white/8 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
-          : "border border-white/5 bg-white/[0.03] backdrop-blur-xl"
-      }`}
-    >
-      <div className="flex items-center justify-between px-8 py-4">
-        <a
-          href="#home"
-          className="text-cyan-400 font-semibold text-sm tracking-[0.35em]"
-        >
-          PREM.
-        </a>
-
-        <nav className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="group relative text-sm text-white/60 hover:text-white transition duration-300"
-            >
-              {item.label}
-
-              <span className="absolute left-0 -bottom-2 h-[1px] w-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={onToggleTheme}
-            className="w-11 h-11 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center hover:bg-white/10 transition"
+    <>
+      <motion.header
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "py-4 bg-[#080808]/85 backdrop-blur-xl border-b border-white/[0.08]"
+            : "py-6 bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+          {/* Brand */}
+          <a
+            href="#home"
+            onClick={(e) => handleLinkClick(e, "#home")}
+            className="group flex flex-col"
           >
-            {theme === "dark" ? (
-              <svg
-                viewBox="0 0 24 24"
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+            <span className="font-display text-base md:text-lg font-bold tracking-[0.18em] text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors duration-300">
+              PREM MISHRA
+            </span>
+            <span className="font-mono text-[10px] tracking-[0.25em] text-[#94949e] uppercase -mt-0.5">
+              Java Backend Developer
+            </span>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-10">
+            {navLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleLinkClick(e, item.href)}
+                className="group relative font-mono text-xs tracking-[0.2em] text-[#94949e] hover:text-[#f4f4f5] transition-colors duration-300 py-1"
               >
-                <circle cx="12" cy="12" r="5" />
-              </svg>
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+                <span>{item.label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#e5b85c] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+
+            {onOpenResume && (
+              <button
+                onClick={onOpenResume}
+                className="inline-flex items-center px-4 py-1.5 rounded-full font-mono text-xs tracking-wider border border-[#e5b85c]/40 text-[#e5b85c] hover:bg-[#e5b85c]/10 transition-colors duration-300"
               >
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-              </svg>
+                RESUME
+              </button>
             )}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-full border border-white/10 bg-white/[0.03] text-white focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <div className="w-5 flex flex-col items-end space-y-1.5">
+              <span
+                className={`block h-[1.5px] bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "w-5 rotate-45 translate-y-2 bg-[#e5b85c]" : "w-5"
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "opacity-0" : "w-3"
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "w-5 -rotate-45 -translate-y-1 bg-[#e5b85c]" : "w-4"
+                }`}
+              />
+            </div>
           </button>
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+
+      {/* Mobile Drawer Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[#080808]/98 backdrop-blur-2xl md:hidden pt-28 px-8 flex flex-col justify-between pb-12"
+          >
+            <div className="space-y-6">
+              <p className="font-mono text-xs tracking-[0.3em] uppercase text-[#e5b85c] mb-6">
+                Navigation
+              </p>
+              {navLinks.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleLinkClick(e, item.href)}
+                    className="flex items-baseline justify-between border-b border-white/[0.08] pb-4 group"
+                  >
+                    <span className="font-display text-2xl font-bold tracking-tight text-[#f4f4f5] group-hover:text-[#e5b85c] transition-colors">
+                      {item.label}
+                    </span>
+                    <span className="font-mono text-xs text-white/30">
+                      {item.number}
+                    </span>
+                  </a>
+                </motion.div>
+              ))}
+
+              {onOpenResume && (
+                <div className="pt-4">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenResume();
+                    }}
+                    className="w-full py-3.5 rounded-full border border-[#e5b85c]/40 text-[#e5b85c] font-mono text-xs tracking-wider bg-[#e5b85c]/5"
+                  >
+                    VIEW RESUME
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="border-t border-white/[0.08] pt-6 flex items-center justify-between text-xs font-mono text-[#94949e]">
+              <span>PUNE, INDIA</span>
+              <a
+                href="https://github.com/premmishra220"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-white"
+              >
+                GITHUB ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/in/prem-prakash-mishra-20516a288"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-white"
+              >
+                LINKEDIN ↗
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

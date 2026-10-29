@@ -1,116 +1,136 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const experienceData = [
+  {
+    role: "Backend Developer Intern – Spring Boot",
+    company: "Indux Technology",
+    location: "Pune, Maharashtra, India",
+    period: "Feb 16, 2026 – May 16, 2026",
+    badge: "INDUSTRY INTERNSHIP",
+    technologies: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA", "REST APIs", "JWT", "MySQL", "Git", "Postman"],
+    responsibilities: [
+      "Developed modular backend services utilizing Java and Spring Boot adhering to strict Controller-Service-Repository architecture.",
+      "Engineered, documented, and tested RESTful APIs with stateless authentication and authorization powered by Spring Security and JWT.",
+      "Managed entity lifecycles, relational mappings, and transactional database persistence using Spring Data JPA and Hibernate.",
+      "Employed Git and GitHub for version control, collaborative workflows, and Postman for rigorous API testing and debugging.",
+    ],
+  },
+];
 
 const Experience = () => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
-  const experiences = [
-    {
-      title: 'Backend Developer Intern - Spring Boot',
-      company: 'Indux Technology',
-      location: 'Pune, Maharashtra',
-      period: 'Feb 2026 - May 2026',
-      description: [
-        'Developed backend modules using Java and Spring Boot with Controller-Service-Repository architecture',
-        'Built and tested RESTful APIs and implemented authentication and authorization using Spring Security and JWT',
-        'Worked with Spring Data JPA for entity management and database operations',
-        'Used Git, GitHub, and Postman for version control, API testing, debugging, and backend development'
-      ]
-    },
-
-    {
-      title: 'Bachelor of Engineering (Information Technology)',
-      company: 'Sinhgad Institute of Technology',
-      location: 'Pune, Maharashtra',
-      period: '2023 - 2027',
-      description: [
-        'Currently pursuing B.E. in Information Technology with a CGPA of 7.01/10.0',
-        'Building strong foundations in Java, Data Structures, Algorithms, DBMS, and Software Development',
-        'Developing practical experience through backend projects, coding practice, and hackathons'
-      ]
-    },
-
-    {
-      title: 'Higher Secondary (12th)',
-      company: 'Lakha Interstariya Madhya Vidyalaya, Barni (Bhojpur, Bihar)',
-      location: 'Bihar Board',
-      period: '2022',
-      description: [
-        'Completed Higher Secondary education from Bihar Board',
-        'Secured 66.7% marks'
-      ]
-    },
-
-    {
-      title: 'Secondary (10th)',
-      company: 'Delhi Model Public School, Kulharia (Ara, Bihar)',
-      location: 'CBSE Board',
-      period: '2020',
-      description: [
-        'Completed Secondary education from CBSE Board',
-        'Secured 65.0% marks'
-      ]
-    }
-  ];
-
   return (
-    <section id="experience" className="section-padding bg-gradient-to-b from-gray-900 to-dark-bg">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="section-padding border-t border-white/[0.08] relative">
+      <div className="max-w-7xl mx-auto" ref={ref}>
+        {/* Section Header */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-10"
         >
-          <h2 className="text-5xl font-bold mb-6">
-            Experience & <span className="neon-text">Education</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto rounded-full mb-8"></div>
+          <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#e5b85c]">
+            05 / Career Timeline
+          </span>
+          <div className="h-[1px] flex-1 bg-white/[0.08]" />
         </motion.div>
 
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-blue to-neon-purple rounded-full hidden md:block"></div>
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase text-[#f4f4f5]">
+              WORK <span className="text-[#e5b85c]">EXPERIENCE</span>
+            </h2>
+            <p className="font-mono text-xs text-[#94949e] uppercase tracking-[0.2em] mt-3">
+              PRODUCTION BACKEND ENGINEERING
+            </p>
+          </div>
+          <p className="max-w-md text-sm text-[#94949e] font-light leading-relaxed">
+            Real-world backend engineering experience delivering production Spring Boot APIs and secure persistence layers.
+          </p>
+        </motion.div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className={`flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                <div className="hidden md:block w-6 h-6 bg-neon-blue rounded-full border-4 border-dark-bg absolute left-1/2 transform -translate-x-1/2 z-10 shadow-neon"></div>
-
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="glass-card p-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      <span className="text-neon-blue font-semibold mt-2 md:mt-0">{exp.period}</span>
-                    </div>
-                    <h4 className="text-lg text-gray-300 mb-2">{exp.company}</h4>
-                    <p className="text-gray-400 mb-4">{exp.location}</p>
-                    <ul className="space-y-2">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-gray-300 flex items-start">
-                          <span className="text-neon-blue mr-2 mt-1">•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+        {/* Timeline Item */}
+        <div className="space-y-8">
+          {experienceData.map((exp, idx) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
+              className="p-8 md:p-12 rounded-3xl border border-white/[0.08] bg-[#0e0e11]/90 hover:border-[#e5b85c]/40 transition-all duration-300"
+            >
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 mb-8 border-b border-white/[0.08] gap-4">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="px-3 py-1 rounded-full font-mono text-[11px] tracking-wider text-[#e5b85c] bg-[#e5b85c]/10 border border-[#e5b85c]/30">
+                      {exp.badge}
+                    </span>
+                    <span className="font-mono text-xs text-white/40">
+                      {exp.location}
+                    </span>
                   </div>
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#f4f4f5]">
+                    {exp.role}
+                  </h3>
+                  <p className="font-sans text-lg text-[#e5b85c] font-medium mt-1">
+                    {exp.company}
+                  </p>
                 </div>
 
-                <div className="hidden md:block w-2/12"></div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="font-mono text-xs md:text-sm text-[#94949e] px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] self-start lg:self-center">
+                  {exp.period}
+                </div>
+              </div>
+
+              {/* Responsibilities */}
+              <div className="space-y-4 mb-8">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50">
+                  Key Responsibilities & Deliverables
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <div
+                      key={rIdx}
+                      className="p-4 rounded-2xl border border-white/[0.05] bg-white/[0.01] flex items-start gap-3"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#e5b85c] mt-2 flex-shrink-0" />
+                      <p className="text-sm text-[#94949e] font-light leading-relaxed">
+                        {resp}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technologies */}
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
+                  Applied Tech Stack
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1 rounded-lg text-xs font-mono tracking-wide border border-white/[0.08] bg-white/[0.02] text-white/70"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

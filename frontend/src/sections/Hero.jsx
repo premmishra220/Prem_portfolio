@@ -1,191 +1,205 @@
-
-import AnimatedBackground from "../components/AnimatedBackground";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import profile from "../assets/profile.jpg";
 
-const Hero = () => {
-  const [showResumePreview, setShowResumePreview] = useState(false);
-
+const Hero = ({ onOpenResume }) => {
   return (
-    <>
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center overflow-hidden bg-black"
-      >
-        <AnimatedBackground />
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col justify-between pt-32 md:pt-36 pb-12 px-6 lg:px-12 max-w-7xl mx-auto w-full"
+    >
+      <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
+        {/* Left Column: Massive Editorial Typography & Introduction */}
+        <div className="lg:col-span-8 flex flex-col justify-center">
+          {/* Eyebrow / Positioning */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#e5b85c] animate-pulse" />
+            <span className="font-mono text-xs md:text-sm tracking-[0.25em] uppercase text-[#e5b85c]">
+              Portfolio 2026 — Engineering & Architecture
+            </span>
+          </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-8"
+          {/* Very Large Name Typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="overflow-hidden"
+          >
+            <h1 className="font-display font-extrabold text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[-0.04em] uppercase leading-[0.88] text-[#f4f4f5]">
+              PREM
+              <br />
+              MISHRA
+            </h1>
+          </motion.div>
+
+          {/* Role Typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-4 md:mt-6"
+          >
+            <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase tracking-[-0.02em] text-[#e5b85c] leading-[1.05]">
+              JAVA BACKEND
+              <br className="sm:hidden" /> DEVELOPER
+            </h2>
+          </motion.div>
+
+          {/* Supporting Statement */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-6 md:mt-8 max-w-2xl text-base md:text-xl text-[#94949e] font-light leading-relaxed"
+          >
+            Building reliable backend systems and modern web applications with Java and Spring Boot.
+          </motion.p>
+
+          {/* Core CTAs and Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#work"
+              className="btn-primary"
+            >
+              SELECTED WORK
+            </a>
+
+            {onOpenResume && (
+              <button
+                onClick={onOpenResume}
+                className="btn-secondary group flex items-center gap-2"
               >
-                <div className="w-2 h-2 rounded-full bg-cyan-400" />
-                <span className="text-sm text-white/70 tracking-[0.2em] uppercase">
-                  Spring Boot Developer
-                </span>
-              </motion.div>
+                <span>RESUME</span>
+                <span className="text-[#e5b85c] transition-transform duration-300 group-hover:translate-x-0.5">↓</span>
+              </button>
+            )}
 
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-7xl xl:text-8xl font-semibold leading-[0.95] tracking-tight"
-              >
-                Building
-                <br />
-                scalable backend
-                <br />
-                systems with
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
-                  Spring Boot
-                </span>
-              </motion.h1>
+            <a
+              href="#contact"
+              className="btn-secondary"
+            >
+              CONTACT
+            </a>
+          </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed"
-              >
-                Backend developer specializing in Java, Spring Boot, REST APIs,
-                Spring Security, and MySQL. Also experienced in MERN Stack and
-                modern full-stack development, with a focus on building
-                scalable and performance-driven web applications.
-              </motion.p>
-
-              <div className="flex flex-wrap gap-4 mt-10">
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("projects")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="px-7 py-4 rounded-full bg-white text-black font-medium hover:scale-105 transition"
-                >
-                  View Projects
-                </button>
-
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="px-7 py-4 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl text-white hover:bg-white/10 transition"
-                >
-                  Contact
-                </button>
-
-                {/* Resume Preview Button */}
-                <button
-                  onClick={() => setShowResumePreview(true)}
-                  className="px-7 py-4 rounded-full border border-cyan-400/20 text-cyan-300 bg-cyan-400/5 hover:bg-cyan-400/10 transition"
-                >
-                  Resume
-                </button>
-              </div>
-
-              <div className="flex gap-8 mt-14">
-                <div>
-                  <h3 className="text-3xl font-semibold">5+</h3>
-                  <p className="text-white/50 text-sm mt-2">Projects Built</p>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-semibold">6</h3>
-                  <p className="text-white/50 text-sm mt-2">Months Experience</p>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-semibold">5+</h3>
-                  <p className="text-white/50 text-sm mt-2">Certificates</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative flex justify-center lg:justify-end">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="relative"
-              >
-                <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-cyan-400/20 to-purple-500/20 blur-3xl" />
-
-                <div className="relative p-4 rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-2xl">
-                  <img
-                    src={profile}
-                    alt="profile"
-                    className="w-[320px] md:w-[420px] h-[420px] md:h-[540px] object-cover rounded-[28px]"
-                  />
-                </div>
-
-                <div className="absolute -bottom-6 -left-6 px-5 py-4 rounded-2xl border border-white/10 bg-white/10 backdrop-blur-xl">
-                  <p className="text-sm text-white/60">
-                    Ex intern At
-                  </p>
-                  <h4 className="text-lg font-semibold">
-                    Indux Technology
-                  </h4>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Resume Preview Modal */}
-      <AnimatePresence>
-        {showResumePreview && (
+          {/* Social Links Metadata Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-12 pt-8 border-t border-white/[0.08] flex flex-wrap items-center gap-6 md:gap-10 font-mono text-xs text-[#94949e]"
           >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="relative w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl"
+            <a
+              href="https://github.com/premmishra220"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#e5b85c] transition-colors flex items-center gap-1.5"
             >
-              {/* Top Bar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5 backdrop-blur-xl">
-                <h3 className="text-lg font-semibold text-white">
-                  Resume Preview
-                </h3>
+              <span>GITHUB</span>
+              <span className="text-white/40">↗</span>
+            </a>
 
-                <div className="flex items-center gap-3">
-                  <a
-                    href="/resume.pdf"
-                    download="resume.pdf"
-                    className="px-5 py-2 rounded-full bg-cyan-400 text-black font-medium hover:scale-105 transition"
-                  >
-                    Download
-                  </a>
+            <a
+              href="https://www.linkedin.com/in/prem-prakash-mishra-20516a288"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#e5b85c] transition-colors flex items-center gap-1.5"
+            >
+              <span>LINKEDIN</span>
+              <span className="text-white/40">↗</span>
+            </a>
 
-                  <button
-                    onClick={() => setShowResumePreview(false)}
-                    className="w-10 h-10 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 transition"
-                  >
-                    ✕
-                  </button>
+            <a
+              href="mailto:premmishrasonb@gmail.com"
+              className="hover:text-[#e5b85c] transition-colors flex items-center gap-1.5"
+            >
+              <span>EMAIL</span>
+              <span className="text-white/40">↗</span>
+            </a>
+
+            <span className="text-white/30 hidden sm:inline">|</span>
+
+            <span className="text-white/50 tracking-wider">
+              PUNE, MAHARASHTRA
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Right Column: Editorial Portrait Showcase */}
+        <div className="lg:col-span-4 flex justify-center lg:justify-end">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative w-full max-w-[340px] md:max-w-[380px]"
+          >
+            {/* Museum-grade Framing */}
+            <div className="relative rounded-3xl overflow-hidden border border-white/[0.1] bg-[#0e0e11] p-3 shadow-2xl">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900">
+                <img
+                  src={profile}
+                  alt="Prem Mishra — Java Backend Developer"
+                  className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />
+                
+                {/* Subtle Image Tag */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="p-3 rounded-xl bg-[#080808]/85 backdrop-blur-md border border-white/[0.08]">
+                    <div className="flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-white/50">PREM MISHRA</span>
+                      <span className="text-[#e5b85c]">JAVA / SPRING BOOT</span>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* PDF Preview */}
-              <iframe
-                src="/resume.pdf"
-                title="Resume Preview"
-                className="w-full h-full bg-white"
-              />
-            </motion.div>
+            {/* Floating Editorial Internship Stamp */}
+            <div className="absolute -bottom-5 -left-4 md:-left-8 px-5 py-3.5 rounded-2xl bg-[#0e0e11]/95 border border-white/[0.1] backdrop-blur-xl shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#e5b85c]" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-white/50">
+                    Industry Experience
+                  </p>
+                  <p className="font-sans text-xs md:text-sm font-semibold text-white">
+                    Indux Technology — Intern
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </div>
+      </div>
+
+      {/* Subtle Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
+        className="pt-10 flex flex-col items-center justify-center pointer-events-none"
+      >
+        <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-white/40">
+          <span>SCROLL TO EXPLORE</span>
+        </div>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-[1px] h-6 bg-gradient-to-b from-[#e5b85c]/80 to-transparent mt-2"
+        />
+      </motion.div>
+    </section>
   );
 };
 
